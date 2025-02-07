@@ -24,6 +24,6 @@ class PracticeItem {
   final String title;
   final String date;
   final Moods mood;
-  final String notes;
+  String? notes;
 
 }

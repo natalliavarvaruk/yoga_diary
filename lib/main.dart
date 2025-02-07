@@ -5,8 +5,8 @@ import 'package:yoga_diary/screens/home_screen.dart';
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.light,
-  seedColor: const Color.fromARGB(248, 244, 202, 234),
-  surface: const Color.fromARGB(255, 197, 128, 204),
+  seedColor: const Color.fromARGB(0, 255, 253, 255),
+  surface: const Color.fromARGB(0, 255, 255, 255),
 );
 
 final theme = ThemeData().copyWith(
@@ -15,7 +15,7 @@ final theme = ThemeData().copyWith(
   colorScheme: colorScheme,
   textTheme: GoogleFonts.ubuntuCondensedTextTheme().apply(
   bodyColor: const Color.fromARGB(255, 130, 60, 210),
-  displayColor: const Color.fromARGB(255, 146, 93, 6),
+  displayColor: const Color.fromARGB(255, 110, 62, 159),
 ).copyWith(
     titleSmall: GoogleFonts.ubuntuCondensed(
       fontWeight: FontWeight.bold,
