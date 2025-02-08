@@ -2,11 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yoga_diary/screens/home_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: const Color.fromARGB(0, 255, 253, 255),
   surface: const Color.fromARGB(0, 255, 255, 255),
+
 );
 
 final theme = ThemeData().copyWith(
@@ -31,7 +34,9 @@ final theme = ThemeData().copyWith(
 );
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ProviderScope(child:  MyApp())
+   );
 }
 
 class MyApp extends StatelessWidget {
@@ -40,6 +45,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       //title: 'Great Places',
       theme: theme,
       home: HomeScreen(),

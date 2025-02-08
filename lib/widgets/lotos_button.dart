@@ -6,8 +6,8 @@ class LotosButton extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
 
-  const LotosButton({Key? key, required this.onTap, this.text = "Add practice"})
-      : super(key: key);
+  const LotosButton(
+    {super.key, required this.onTap, this.text = "Add practice"});
 
   @override
   Widget build(BuildContext context) {

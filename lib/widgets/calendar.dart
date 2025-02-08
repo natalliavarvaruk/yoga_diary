@@ -1,35 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:yoga_diary/models/practice.dart';
+import 'package:yoga_diary/models/practice_entity.dart';
+import 'package:yoga_diary/providers/practice_provider.dart';
+import 'package:yoga_diary/providers/selected_date_provider.dart';
 
 
-class Calendar extends StatefulWidget{
+class Calendar extends ConsumerWidget{
   const Calendar({super.key});
 
   @override
-  State<Calendar> createState() {
-    return _CalendarState();
-  }
-}
+  Widget build(BuildContext context, WidgetRef ref ) {
+    DateTime today = DateTime.now();
+    DateTime firstDay = DateTime.utc(2025, 01 ,01);
+    final DateTime lastDay = DateTime.utc(2026, 01 ,01);
+    final selectedDate = ref.watch(selectedDateProvider);
+    final practices = ref.watch(practiceProvider);
 
-class _CalendarState extends State<Calendar>{
-  DateTime today = DateTime.now();
-  DateTime firstDay = DateTime.utc(2025, 01 ,01);
-  final DateTime lastDay = DateTime.utc(2026, 01 ,01);
-  DateTime? _selectedDate;
-  //store the events created
-  Map<DateTime, List<PracticeItem>> events = {};
+    final dailyPractices = practices
+      .where((practice) => practice.date == selectedDate.toString()).toList();
 
-  void _onDaySelected(DateTime day, DateTime focusedDay) {
-    setState(() {
-      today = day;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
@@ -37,23 +28,46 @@ class _CalendarState extends State<Calendar>{
             Container(
               alignment: Alignment.topCenter,
               height: 300,
-              color: const Color.fromARGB(37, 252, 230, 250),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(37, 252, 230, 250),
+                borderRadius: BorderRadius.circular(10),
+
+              ),
               child: TableCalendar(
-                
                 rowHeight: 40,
                 headerStyle: 
                   HeaderStyle(formatButtonVisible: false, titleCentered: true,),
                 availableGestures: AvailableGestures.all,
-                selectedDayPredicate: (day) => isSameDay(day, today),
+                selectedDayPredicate: (day) => isSameDay(day, selectedDate),
                 startingDayOfWeek: StartingDayOfWeek.monday,
-                focusedDay: today, 
+                focusedDay: selectedDate, 
                 firstDay: firstDay, 
                 lastDay: lastDay,
-                onDaySelected: _onDaySelected,
+
+                calendarBuilders: CalendarBuilders(
+                  markerBuilder: (context, date, events) {
+                    final hasPractice = practices.any((p) => p.date == date.toString().split(' ')[0]);
+                  return hasPractice 
+                  ? Positioned(
+                    bottom: 5,
+                    child: Container(
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        color: Colors.pink[400],
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    ) : null;
+                  },
+                ),
+
+                onDaySelected: (day, focusedDay) => 
+                ref.read(selectedDateProvider.notifier).state = day
                 ),
             ),
           ],
-        ),
+        
       ),
     );
   }
