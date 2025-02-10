@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:yoga_diary/screens/add_practice.dart';
-import 'package:yoga_diary/widgets/calendar.dart';
-import 'package:yoga_diary/widgets/home_statistic.dart';
-import 'package:yoga_diary/widgets/lotos_button.dart';
+import 'package:yoga_diary/widgets/home/calendar.dart';
+import 'package:yoga_diary/widgets/home/daily_practices.dart';
+import 'package:yoga_diary/widgets/home/home_statistic.dart';
+import 'package:yoga_diary/widgets/home/lotos_button.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -12,16 +13,13 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
-      
       children: [
-
+        //----background--
         Container(
           decoration: BoxDecoration(
-
             image: DecorationImage(image: 
               AssetImage('assets/images/lotus_theme.webp'),
               fit: BoxFit.cover,
-        
             ),
           ),
         ),
@@ -38,54 +36,58 @@ class HomeScreen extends ConsumerWidget {
               onPressed: () {}, //autorisation
               icon: Icon(Icons.account_circle),
               color: Theme.of(context).primaryIconTheme.color,
-
             )
-          
         ),
+
         body: 
-           Padding(
+           SingleChildScrollView(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
+              child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text('Best practice time - TODAY!', style: Theme.of(context).textTheme.bodyLarge,)),
+                      padding: const EdgeInsets.all(10),
+
+                      child: Text(
+                        'Best practice time - TODAY!',
+                        //textAlign: TextAlign.start, 
+                        style: Theme.of(context).textTheme.bodyLarge,)),
           
-                    Expanded(
-                      child: LotosButton(onTap: () {
+                     LotosButton(onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                               builder: (context) => AddPracticeScreen()),
                         );
                       }),
-                    ),
                   ],
                 ),
                 
                 
                 //calendar,
                 SizedBox(height: 40,),
-                Expanded(child: Calendar()),
+                Calendar(),
 
                 //statistic,
-                //SizedBox(height: 40,),
+                SizedBox(height: 50,),
                 Container(
                   //height: 200,
                   alignment: Alignment.topLeft,
+                 
                   child: HomeStatistic(),
                   ),
+                SizedBox(height: 10,),
+                DailyPractices(),
               ],
             ),
           ),
-        ),
         
+       ),
       
       ],
+    
     );
   }
 }

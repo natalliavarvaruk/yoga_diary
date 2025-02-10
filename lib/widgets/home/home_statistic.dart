@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:yoga_diary/providers/practice_provider.dart';
+import 'package:yoga_diary/providers/selected_date_provider.dart';
 
 class HomeStatistic extends ConsumerWidget{
   const HomeStatistic({super.key});

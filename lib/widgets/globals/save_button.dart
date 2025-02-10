@@ -15,7 +15,7 @@ class SaveButton extends StatelessWidget {
       return ElevatedButton(
         onPressed: () => onPressed(context,ref),
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(37, 252, 230, 250),
+          backgroundColor: Colors.pink[100],
           padding: EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),

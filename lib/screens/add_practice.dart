@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:yoga_diary/models/practice_entity.dart';
 import 'package:yoga_diary/providers/practice_provider.dart';
-import 'package:yoga_diary/widgets/date_picker_field.dart';
-import 'package:yoga_diary/widgets/practice_selector.dart';
-import 'package:yoga_diary/widgets/mood_selector.dart';
-import 'package:yoga_diary/widgets/notes_field.dart';
-import 'package:yoga_diary/widgets/save_button.dart';
+import 'package:yoga_diary/widgets/globals/date_picker_field.dart';
+import 'package:yoga_diary/widgets/globals/practice_selector.dart';
+import 'package:yoga_diary/widgets/globals/mood_selector.dart';
+import 'package:yoga_diary/widgets/globals/notes_field.dart';
+import 'package:yoga_diary/widgets/globals/save_button.dart';
 
 class AddPracticeScreen extends ConsumerWidget {
   AddPracticeScreen({super.key});
