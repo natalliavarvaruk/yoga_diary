@@ -22,13 +22,16 @@ final theme = ThemeData().copyWith(
 ).copyWith(
     titleSmall: GoogleFonts.ubuntuCondensed(
       fontWeight: FontWeight.bold,
+      fontSize: 12,
     ),
 
     titleMedium: GoogleFonts.ubuntuCondensed(
       fontWeight: FontWeight.bold,
+      fontSize: 16,
     ),
     titleLarge: GoogleFonts.ubuntuCondensed(
       fontWeight: FontWeight.bold,
+      fontSize: 18,
     ),
   ),
 );

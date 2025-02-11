@@ -15,8 +15,8 @@ class SaveButton extends StatelessWidget {
       return ElevatedButton(
         onPressed: () => onPressed(context,ref),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.pink[100],
-          padding: EdgeInsets.symmetric(vertical: 12),
+          backgroundColor: Colors.purple[100],
+          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),
         child: Text("Save Practice", style: Theme.of(context).textTheme.labelLarge,),

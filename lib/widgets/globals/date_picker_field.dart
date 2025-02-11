@@ -15,7 +15,7 @@ class DatePickerField extends StatelessWidget {
         labelText: 'Date of your practice',
         prefixIcon: Icon(Icons.calendar_today),
         filled: true,
-        fillColor: Colors.white.withValues(alpha: 0.2),
+        fillColor: const Color.fromARGB(255, 246, 218, 218).withValues(alpha: 0.2),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
       readOnly: true,

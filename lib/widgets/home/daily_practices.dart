@@ -16,9 +16,9 @@ class DailyPractices extends ConsumerWidget{
         .toList();
     
     return Container(
-            child: dailyPractices.isEmpty
-              ? Center(child: Text("No practice for this day"))
-              : ListView.builder(
+            child: dailyPractices.isNotEmpty
+              ? 
+              ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: dailyPractices.length,
@@ -29,10 +29,10 @@ class DailyPractices extends ConsumerWidget{
                           practice.practiceTitle.toString().split('.').last),
                       subtitle: Text(
                           "Mood: ${practice.mood.toString().split('.').last}"),
-                      leading: Icon(Icons.self_improvement, color: Colors.pink),
+                      leading: Icon(Icons.self_improvement, color: const Color.fromARGB(255, 159, 30, 233)),
                     );
                   },
-                ),
+                ): null,
           );
     
   }
