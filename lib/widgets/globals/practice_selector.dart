@@ -16,6 +16,7 @@ class PracticeSelector extends StatelessWidget {
         filled: true,
         fillColor: Colors.white.withAlpha(20),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        labelText: 'Select type of your practice',
       ),
       items: Practices.values
           .map((practice) => 

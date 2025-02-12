@@ -16,10 +16,6 @@ class Calendar extends ConsumerWidget {
     final selectedDate = ref.watch(selectedDateProvider);
     final practices = ref.watch(practiceProvider);
 
-    final dailyPractices = practices
-        .where((practice) => practice.date == selectedDate.toString().split(' ')[0])
-        .toList();
-
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
@@ -27,7 +23,7 @@ class Calendar extends ConsumerWidget {
           //Text('Selected day = ${today.toString().split(" ")[0]}'),
           Container(
             alignment: Alignment.topCenter,
-            height: 300,
+            height: 320,
             decoration: BoxDecoration(
               color: const Color.fromARGB(37, 252, 230, 250),
               borderRadius: BorderRadius.circular(10),

@@ -12,12 +12,13 @@ class SaveButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child){
-      return ElevatedButton(
+      return TextButton(
         onPressed: () => onPressed(context,ref),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.purple[100],
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.pink,
+          backgroundColor: Colors.pink.withAlpha(15),
           padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         ),
         child: Text("Save Practice", style: Theme.of(context).textTheme.labelLarge,),
         

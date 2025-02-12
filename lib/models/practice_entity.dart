@@ -1,9 +1,34 @@
+import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
 enum Moods {
   happy,
   sad,
   neutral,
+  inspired, 
+  tired,
+}
+
+extension MoodExtension on Moods {
+  IconData get icon {
+    return {
+      Moods.happy: Icons.sentiment_very_satisfied,
+      Moods.neutral: Icons.sentiment_neutral,
+      Moods.sad: Icons.sentiment_very_dissatisfied,
+      Moods.inspired: Icons.lightbulb,
+      Moods.tired: Icons.bedtime,
+    }[this]!;
+  }
+
+  String get displayName {
+    return {
+      Moods.happy: "Happy",
+      Moods.neutral: "Neutral",
+      Moods.sad: "Sad",
+      Moods.inspired: "Inspired",
+      Moods.tired: "Tired",
+    }[this]!;
+  }
 }
 
 enum Practices {
@@ -11,6 +36,26 @@ enum Practices {
   vinjasa,
   meditation,
   pranajama,
+}
+
+extension PracticeExtension on Practices {
+  String get displayName {
+    return {
+      Practices.hatha: "Hatha Yoga",
+      Practices.vinjasa: "Vinyasa Yoga",
+      Practices.meditation: "Meditation",
+      Practices.pranajama: "Pranayama",
+    }[this]!;
+  }
+
+  IconData get icon {
+    return {
+      Practices.hatha: Icons.self_improvement,
+      Practices.vinjasa: Icons.sports_gymnastics,
+      Practices.meditation: Icons.spa,
+      Practices.pranajama: Icons.air,
+    }[this]!;
+  }
 }
 
 const uuid = Uuid();

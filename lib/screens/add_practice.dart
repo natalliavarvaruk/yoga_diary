@@ -102,11 +102,11 @@ class AddPracticeScreen extends ConsumerWidget {
                   SizedBox(
                     height: 16,
                   ),
-                  MoodSelector(
-                      value: practice.mood,
-                      onChanged: (v) => ref
-                          .read(currentPracticeProvider.notifier)
-                          .setMood(v!)),
+                  MoodSelector(),
+                      // value: practice.mood,
+                      // onChanged: (v) => ref
+                      //     .read(currentPracticeProvider.notifier)
+                      //     .setMood(v!)),
                   //enter text about feels
                   //Text('Big text notes'),
                   SizedBox(
