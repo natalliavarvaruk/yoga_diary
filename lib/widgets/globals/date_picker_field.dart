@@ -13,10 +13,27 @@ class DatePickerField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         labelText: 'Date of your practice',
-        prefixIcon: Icon(Icons.calendar_today),
+        labelStyle: TextStyle(color: Colors.white),
+        prefixIcon: Icon(Icons.calendar_today, color: Color.fromARGB(255, 110, 62, 159,),),
         filled: true,
         fillColor: const Color.fromARGB(255, 246, 218, 218).withValues(alpha: 0.2),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10), 
+          borderSide: BorderSide(color: Colors.white)
+        ),
+        enabledBorder: OutlineInputBorder( 
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.white),
+          ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.white)
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.pink.shade100),
+        )
+        
       ),
       readOnly: true,
       onTap: onTap,

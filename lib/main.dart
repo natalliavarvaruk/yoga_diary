@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.light,
   seedColor: const Color.fromARGB(0, 255, 253, 255),
-  surface: const Color.fromARGB(0, 255, 255, 255),
+  surface: const Color.fromARGB(0, 252, 252, 252),
 
 );
 
@@ -15,7 +15,7 @@ final theme = ThemeData().copyWith(
   colorScheme: colorScheme,
   textTheme: GoogleFonts.ubuntuCondensedTextTheme()
       .apply(
-        bodyColor: const Color.fromARGB(255, 130, 60, 210),
+        bodyColor:  Color.fromARGB(255, 130, 60, 210),
         displayColor: const Color.fromARGB(255, 110, 62, 159),
       )
       .copyWith(

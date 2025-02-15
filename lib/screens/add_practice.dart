@@ -72,8 +72,12 @@ class AddPracticeScreen extends ConsumerWidget {
           appBar: AppBar(
             title: Text(
               'Add your practice',
-              style: Theme.of(context).textTheme.headlineSmall,
+              style: TextStyle(color: Colors.white, fontSize: 24), //Theme.of(context).textTheme.headlineSmall,
             ),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.white,),
+              onPressed: () => {Navigator.of(context).pop()}, 
+              ),
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(8.0),
