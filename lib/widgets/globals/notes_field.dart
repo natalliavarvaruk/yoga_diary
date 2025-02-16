@@ -14,9 +14,23 @@ class NotesField extends StatelessWidget {
       maxLines: 4,
       decoration: InputDecoration(
         labelText: 'Your thoughts and reflections',
+        labelStyle: TextStyle(color: Color(0xFF803AA9)),
+        
+
         filled: true,
         fillColor: Colors.white.withAlpha(20),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.white)
+          ),
+        enabledBorder: OutlineInputBorder( 
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.white),
+          ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.white)
+        ),
       ),
       onChanged: onChanged,
     );

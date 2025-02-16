@@ -13,14 +13,16 @@ class SaveButton extends StatelessWidget {
     return Consumer(
       builder: (context, ref, child){
       return TextButton(
+        
         onPressed: () => onPressed(context,ref),
         style: TextButton.styleFrom(
-          foregroundColor: Colors.pink,
-          backgroundColor: Colors.pink.withAlpha(15),
+          foregroundColor: Color.fromARGB(255, 30, 4, 45),
+          backgroundColor: Color(0xFF803AA9),
           padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          //alignment: Alignment.center
         ),
-        child: Text("Save Practice", style: Theme.of(context).textTheme.labelLarge,),
+        child: Text("Save Practice", style: Theme.of(context).textTheme.labelLarge!.copyWith(color: Colors.white),),
         
       );
       },

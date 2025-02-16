@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:yoga_diary/models/practice_entity.dart';
+
 import 'package:yoga_diary/providers/practice_provider.dart';
 import 'package:yoga_diary/providers/selected_date_provider.dart';
 
@@ -23,9 +23,10 @@ class Calendar extends ConsumerWidget {
           //Text('Selected day = ${today.toString().split(" ")[0]}'),
           Container(
             alignment: Alignment.topCenter,
-            height: 320,
+            height: 335,
             decoration: BoxDecoration(
-              color: const Color.fromARGB(37, 252, 230, 250),
+              color:
+                  const Color(0x80ddc5c4), //Color.fromARGB(37, 252, 230, 250),
               borderRadius: BorderRadius.circular(10),
             ),
             child: TableCalendar(
@@ -33,6 +34,36 @@ class Calendar extends ConsumerWidget {
                 headerStyle: HeaderStyle(
                   formatButtonVisible: false,
                   titleCentered: true,
+                  titleTextStyle:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  leftChevronIcon: Icon(Icons.chevron_left, color: Color(0xFF803AA9), size: 28), // 🔥 ЛЕВАЯ стрелка
+                  rightChevronIcon: Icon(Icons.chevron_right, color: Color(0xFF803AA9), size: 28), // 🔥 ПРАВАЯ стрелка
+  
+                ),
+                daysOfWeekStyle: DaysOfWeekStyle(
+                    weekdayStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    weekendStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      //color: Color(0xFFE26266),
+                    )),
+                calendarStyle: CalendarStyle(
+                  todayDecoration: BoxDecoration(
+                    color: Colors.deepPurple.withValues(alpha: 0.5), // 🔥 Сегодняшний день выделяем мягким розовым цветом
+                    shape: BoxShape.circle,
+                  ),
+                  selectedDecoration: BoxDecoration(
+                    color: Colors.deepPurple, // 🔥 Выбранный день выделяем насыщенным цветом
+                    shape: BoxShape.circle,
+                  ),
+                  weekendTextStyle: TextStyle(
+                      color: Color(0xFFE26266),
+                      fontWeight: FontWeight.bold),
+                      
+                  outsideDaysVisible: false, // 🎨 Красим выходные дни в другой цвет
                 ),
                 availableGestures: AvailableGestures.all,
                 selectedDayPredicate: (day) => isSameDay(day, selectedDate),
@@ -51,7 +82,7 @@ class Calendar extends ConsumerWidget {
                               width: 8,
                               height: 8,
                               decoration: BoxDecoration(
-                                color: Colors.pink[400],
+                                color: Color(0xFFE26266),
                                 shape: BoxShape.circle,
                               ),
                             ),
@@ -59,7 +90,6 @@ class Calendar extends ConsumerWidget {
                         : null;
                   },
                 ),
-
                 onDaySelected: (day, focusedDay) =>
                     ref.read(selectedDateProvider.notifier).state = day),
           ),

@@ -10,7 +10,7 @@ class MotivationText extends StatelessWidget {
       child: Text(
         'Best practice time - TODAY!',
         //textAlign: TextAlign.start,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
       ),
     );
   }

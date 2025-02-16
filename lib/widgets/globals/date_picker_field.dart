@@ -31,7 +31,7 @@ class DatePickerField extends StatelessWidget {
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.pink.shade100),
+          borderSide: BorderSide(color: Colors.white),
         )
         
       ),

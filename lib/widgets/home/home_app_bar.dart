@@ -11,7 +11,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         'Your yoga diary',
-        style: Theme.of(context).textTheme.headlineSmall,
+        style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
       ),
       leading: IconButton(
         onPressed: () {}, // authorization - later

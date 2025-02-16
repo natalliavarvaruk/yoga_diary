@@ -20,7 +20,7 @@ class AddPracticeScreen extends ConsumerWidget {
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2025),
-      lastDate: DateTime(2035),
+      lastDate: DateTime(2135),
     );
 
     if (picked != null) {
@@ -58,80 +58,99 @@ class AddPracticeScreen extends ConsumerWidget {
     _dateController.text = practice.date;
     _notesController.text = practice.notes ?? "";
 
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/lotus_theme.webp'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
+    return 
+        // Container(
+        //   decoration: BoxDecoration(
+        //     image: DecorationImage(
+        //       image: AssetImage('assets/images/lotus_theme.webp'),
+        //       fit: BoxFit.cover,
+        //     ),
+        //   ),
+        // ),
         Scaffold(
+          extendBodyBehindAppBar: true, // 🔥 Делаем фон на весь экран
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
             title: Text(
               'Add your practice',
               style: TextStyle(color: Colors.white, fontSize: 24), //Theme.of(context).textTheme.headlineSmall,
             ),
             leading: IconButton(
               icon: Icon(Icons.arrow_back, color: Colors.white,),
-              onPressed: () => {Navigator.of(context).pop()}, 
+              onPressed: () => Navigator.of(context).pop(), 
               ),
           ),
-          body: SingleChildScrollView(
-            padding: EdgeInsets.all(8.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  //select date
-                  DatePickerField(
-                    controller: _dateController,
-                    onTap: () => _selectDate(context, ref),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-
-                  //select type of practice - enum and drop down
-                  //Text('Select practice'),
-                  PracticeSelector(
-                      value: practice.practiceTitle,
-                      onChanged: (v) => ref
-                          .read(currentPracticeProvider.notifier)
-                          .setPractice(v!)),
-                  //select emotion
-                  //Text('How do you feel today'),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  MoodSelector(),
-                      // value: practice.mood,
-                      // onChanged: (v) => ref
-                      //     .read(currentPracticeProvider.notifier)
-                      //     .setMood(v!)),
-                  //enter text about feels
-                  //Text('Big text notes'),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  NotesField(
-                    controller: _notesController,
-                    onChanged: (text) => ref
-                        .read(currentPracticeProvider.notifier)
-                        .setNotes(text!),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  SaveButton(onPressed: _savePractice),
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFFCA9597),
+                  Color(0xffEDF0ED),
                 ],
+                )
+
+            ),
+            //alignment: Alignment.topLeft,
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14),
+              child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              //padding: EdgeInsets.only(top: kToolbarHeight+46, left: 16, right: 16),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 26),
+                    DatePickerField(
+                      controller: _dateController,
+                      onTap: () => _selectDate(context, ref),
+                    ),
+            
+                    const SizedBox(height: 26),
+                    PracticeSelector(
+                        value: practice.practiceTitle,
+                        onChanged: (v) => ref
+                            .read(currentPracticeProvider.notifier)
+                            .setPractice(v!)),
+                    const SizedBox(height: 26),
+                    Text(
+                      'How do you feel today?', 
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                      //textAlign: TextAlign.left,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    MoodSelector(),
+                    const SizedBox(
+                      height: 36,
+                    ),
+                    NotesField(
+                      controller: _notesController,
+                      onChanged: (text) => ref
+                          .read(currentPracticeProvider.notifier)
+                          .setNotes(text!),
+                    ),
+                    const SizedBox(
+                      height: 26,
+                    ),
+                    Center(child: SaveButton(onPressed: _savePractice)),
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      ],
-    );
+          ),
+        );
   }
 }

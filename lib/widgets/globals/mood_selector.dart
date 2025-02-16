@@ -26,7 +26,7 @@ class MoodSelector extends ConsumerWidget {
                 // 🔥 Теперь иконки в круглых кнопках
                 radius: 28,
                 backgroundColor: isSelected
-                    ? Color.fromARGB(155, 130, 60, 210)
+                    ? Color(0xFF803AA9)//Color.fromARGB(155, 130, 60, 210)
                     : Colors.grey[200],
                 child: Icon(
                   mood.icon,
